@@ -14,6 +14,10 @@ git_user: ohing504
 # If you use github, the should be the same as the email
 git_email: ohing504@gmail.com
 
+git_aliases:
+  - pom = push origin master
+  - pod = push origin develop
+
 
 ## Python
 
