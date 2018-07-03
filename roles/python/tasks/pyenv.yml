@@ -1,5 +1,5 @@
 ---
-- name: Install nvm from git repo
+- name: Install pyenv from git repo
   git:
     repo: "{{ pyenv_git_repo }}"
     dest: "{{ pyenv_root }}"
