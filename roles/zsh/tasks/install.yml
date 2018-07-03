@@ -1,6 +1,6 @@
 ---
-- include: mac/install.yml
+- include_tasks: mac/install.yml
   when: ansible_os_family == 'Darwin'
 
-- include: debian/install.yml
+- include_tasks: debian/install.yml
   when: ansible_os_family == 'Debian'

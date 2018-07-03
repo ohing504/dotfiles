@@ -1,6 +1,6 @@
 ---
 # Installation and setup
-- include: install.yml
+- import_tasks: install.yml
 
 # Configuration
 - name: Check if zshrc already exists
@@ -14,7 +14,7 @@
   when: zshrc_stat.stat.exists
   changed_when: false
 
-- include: oh-my-zsh.yml
+- import_tasks: oh-my-zsh.yml
 
 - name: Link zshrc file
   file:

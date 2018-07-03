@@ -1,5 +1,5 @@
 ---
-- include: pyenv.yml
+- import_tasks: pyenv.yml
 
 - name: Install python versions
   command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}

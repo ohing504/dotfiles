@@ -1,6 +1,6 @@
 ---
 # Installation
-- include: install.yml
+- import_tasks: install.yml
 
 # configuration
 - name: Check if vimrc exists
