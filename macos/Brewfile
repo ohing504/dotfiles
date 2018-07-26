@@ -1,0 +1,37 @@
+# Taps
+tap "brewsci/science"
+tap "homebrew/cask"
+tap "homebrew/bundle"
+tap "homebrew/core"
+tap "homebrew/science"
+tap "homebrew/services"
+tap "homebrew/versions"
+
+# Binaries/Libraries
+brew "automake"
+brew "cmake"
+brew "coreutils"
+brew "docutils"     # for jekyll-rst plugin of jekyll
+brew "gcc@4.9"
+brew "gdbm"         # dependencies for docutils
+brew "gettext"
+brew "git"
+brew "libyaml"
+brew "openssl@1.1"
+brew "rbenv"
+brew "readline"     # dependencies for docutils
+brew "readline"     # for ruby, ...
+brew "wget"
+brew "yarn", args: ["without-node"]
+brew "zsh"
+
+# 중요! 이 줄이 없으면, ~/Applications에 설치하므로 꼭 넣어야 한다.
+cask_args appdir: "/Applications"
+
+# Applications
+cask "alfred"
+cask "google-chrome"
+cask "iterm2"
+cask "postman"
+cask "vagrant"
+cask "virtualbox"
