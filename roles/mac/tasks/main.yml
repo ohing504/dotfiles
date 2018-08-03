@@ -24,18 +24,4 @@
   shell: brew bundle install --file="{{ ansible_env.HOME }}/Brewfile"
   when: bundle_check_result is failed
 
-- name: Directory Creation
-  file:
-    path: "{{ ansible_env.HOME }}/.shell/{{ role_name }}"
-    state: directory
-
-- name: Link Shell Aliases files
-  file:
-    src: "{{ item }}"
-    dest: "{{ ansible_env.HOME }}/.shell/{{ role_name }}/{{ item | basename | regex_replace('.link', '') }}"
-    state: link
-    force: yes
-    follow: no
-  with_fileglob:
-    - files/*.zsh.link
-
+- import_tasks: link-shell-configs.yml
