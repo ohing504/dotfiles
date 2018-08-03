@@ -1,5 +1,5 @@
 ---
-- import_tasks: pyenv.yml
+- include_tasks: "install-{{ ansible_os_family | lower }}.yml"
 
 - name: Install python versions
   command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}
@@ -14,12 +14,12 @@
   template:
     src: templates/pyenv_versions.j2
     dest: "{{ ansible_env.HOME }}/.python-version"
-
+ 
 - name: Install addtional python packages
   pip: name={{ item }} state=latest executable={{ ansible_env.HOME }}/.pyenv/shims/pip
   with_items:
     - "{{ python_packages }}"
-
+ 
 - name: Check if pytest.ini file exists
   stat: path="{{ ansible_env.HOME }}/pytest.ini"
   register: pytest_stat
@@ -28,13 +28,15 @@
   command: mv ~/pytest.ini ~/pytest.ini.orig
   args:
     creates: "{{ ansible_env.HOME }}/pytest.ini"
-  when: pytest_stat.stat.exists
+  when: pytest_stat.stat.exists and not pytest_stat.stat.islnk
   changed_when: false
 
 - name: Link pytest.ini file
   file:
-    src: "{{ dotfiles_home }}/roles/python/files/pytest.ini"
+    src: "{{ dotfiles_home }}/roles/python/files/pytest.ini.link"
     dest: "{{ ansible_env.HOME }}/pytest.ini"
     state: link
     force: yes
   changed_when: false
+
+- import_tasks: link-shell-configs.yml

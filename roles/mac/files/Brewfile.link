@@ -9,7 +9,11 @@ tap "homebrew/services"
 brew "ansible"
 brew "git"
 brew "mas"
+brew "pipenv"
+brew "pyenv"
+brew "python"
 brew "wget"
+brew "xz"
 brew "yarn", args: ["without-node"]
 brew "zsh"
 
