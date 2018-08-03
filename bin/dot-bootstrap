@@ -1,4 +1,4 @@
 #!/bin/bash
 
 echo "Setting up local environment..."
-ansible-playbook -i ~/dotfiles/hosts ~/dotfiles/local_env.yml --ask-become-pass
+ansible-playbook ~/dotfiles/main.yml

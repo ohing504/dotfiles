@@ -1,0 +1,26 @@
+---
+- name: Collecting Facts
+  hosts: local
+  gather_facts: yes
+
+- name: Set up local environment
+  hosts: local
+  vars_files:
+    - vars/defaults.yml
+
+  pre_tasks:
+    - name: Include user configuration
+      include_vars: "{{ item }}"
+      with_first_found:
+        - files:
+          - "{{ ansible_env.USER }}.yml"
+          skip: true
+      tags: [always]
+
+  roles:
+    - { role: git, tags: ['git'] }
+    - { role: mac, tags: ['bootstrap'], when: "ansible_os_family == 'Darwin'" }
+    - { role: zsh, tags: ['bootstrap', 'zsh'] }
+    - { role: vim, tags: ['vim'] }
+    - { role: python, tags: ['python'] }
+#    - node

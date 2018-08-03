@@ -1,0 +1,16 @@
+# vi: set ft=yaml :
+
+dotfiles_home: "{{ ansible_env.HOME}}/dotfiles"
+full_name: Youngsup Oh
+
+## git
+
+# Name used in commit message
+git_full_name: "{{ full_name }}"
+
+# Github username
+git_user: ohing504
+
+# If you use github, the should be the same as the email
+git_email: ohing504@gmail.com
+
