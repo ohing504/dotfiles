@@ -22,6 +22,7 @@ cask_args appdir: "/Applications"
 
 # Applications
 cask "alfred"
+cask "bettertouchtool"
 cask "google-chrome"
 cask "iterm2"
 cask "postman"
