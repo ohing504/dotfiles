@@ -15,19 +15,11 @@ matrix:
     # High Sierra (10.13)
     - os: osx
       osx_image: xcode9.3
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3
+      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3 ANSIBLE_CONFIG=tests/ansible.cfg
     # Sierra (10.12)
     - os: osx
       osx_image: xcode9.2
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3
-    # High Sierra (10.13)
-    - os: osx
-      osx_image: xcode9.3
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.2
-    # Sierra (10.12)
-    - os: osx
-      osx_image: xcode9.2
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.2
+      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3 ANSIBLE_CONFIG=tests/ansible.cfg
 
 branches:
   only:
@@ -52,11 +44,11 @@ script:
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i tests/inventory tests/test.yml -vvvv --skip-tags bootstrap
+  - ansible-playbook -i tests/inventory tests/test.yml -vvvv
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i tests/inventory tests/test.yml --skip-tags bootstrap
+    ansible-playbook -i tests/inventory tests/test.yml
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
