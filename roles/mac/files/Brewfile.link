@@ -3,11 +3,6 @@ tap "brewsci/science"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "homebrew/science"
-tap "homebrew/versions"
-
-# 중요! 이 줄이 없으면, ~/Applications에 설치하므로 꼭 넣어야 한다.
-cask_args appdir: "/Applications"
 
 # Binaries/Libraries
 brew "automake"
@@ -17,15 +12,18 @@ brew "gcc@4.9"
 brew "gettext"
 brew "git"
 brew "libyaml"
+brew "mas"
 brew "nvm"
 brew "openssl@1.1"
 brew "pyenv"
 brew "rbenv"
-brew "sshpass"
-brew "wget"
 brew "watchman"
+brew "wget"
 brew "yarn", args: ["without-node"]
 brew "zsh"
+
+# 중요! 이 줄이 없으면, ~/Applications에 설치하므로 꼭 넣어야 한다.
+cask_args appdir: "/Applications"
 
 # Applications
 cask "alfred"
@@ -34,3 +32,11 @@ cask "iterm2"
 cask "postman"
 cask "vagrant"
 cask "virtualbox"
+
+# Mac Apple Store (MAS)
+mas "Checkor", id: 1238750814
+mas "KakaoTalk", id: 869223134
+mas "Magnet", id: 441258766
+mas "Microsoft Remote Desktop", id: 1295203466
+mas "Slack", id: 803453959
+mas "Spark", id: 1176895641
