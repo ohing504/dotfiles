@@ -1,7 +1,0 @@
----
-- include: debian/ros.yml
-  become: true
-  when: ansible_os_family == 'Debian'
-
-- include: osx/ros.yml
-  when: ansible_os_family == 'Darwin'
