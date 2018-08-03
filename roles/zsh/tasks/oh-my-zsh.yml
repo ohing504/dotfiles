@@ -5,4 +5,3 @@
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh"
     update: yes
   register: oh-my-zsh-cloning
-

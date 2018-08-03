@@ -95,7 +95,7 @@ source $ZSH/oh-my-zsh.sh
 
 # all of our zsh files
 typeset -U config_files
-config_files=($HOME/dotfiles/**/*.zsh)
+config_files=($HOME/.shell/**/*.zsh)
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}

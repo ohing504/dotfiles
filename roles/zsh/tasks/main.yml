@@ -1,5 +1,4 @@
 ---
-# Installation and setup
 - import_tasks: install.yml
 
 # Configuration
@@ -27,3 +26,5 @@
     src: "{{ dotfiles_home }}/roles/zsh/files/custom.zsh-theme"
     dest: "{{ ansible_env.HOME }}/.oh-my-zsh/custom/themes/custom.zsh-theme"
     state: link
+
+- import_tasks: link-shell-configs.yml
