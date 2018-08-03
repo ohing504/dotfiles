@@ -1,6 +1,7 @@
 ---
 # Installation
-- import_tasks: install.yml
+- import_tasks: install-debian.yml
+  when: ansible_os_family == 'Debian'
 
 # configuration
 - name: Check if vimrc exists
@@ -23,4 +24,3 @@
     force: yes
     follow: no
   changed_when: false
-
