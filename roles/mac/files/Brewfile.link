@@ -3,11 +3,15 @@ tap "brewsci/science"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+tap "homebrew/science"
 tap "homebrew/services"
+tap "homebrew/versions"
 
 # Binaries/Libraries
 brew "ansible"
 brew "git"
+brew "jq"
+brew "libyaml"
 brew "mas"
 brew "pipenv"
 brew "pyenv"
@@ -28,8 +32,25 @@ cask "virtualbox"
 
 # Mac App Store (MAS)
 mas "Checkor", id: 1238750814
+mas "Divvy", id: 413857545
+mas "Friendly Streaming", id: 553245401
 mas "KakaoTalk", id: 869223134
 mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
+mas "Scopie", id: 1027457763
 mas "Slack", id: 803453959
 mas "Spark", id: 1176895641
+mas "Telegram", id: 747648890
+mas "Theine", id: 955848755
+
+#406056744 Evernote (7.2.3)
+#553245401 Friendly Streaming (2.3)
+#1333542190 1Password 7 (7.0.7)
+#497799835 Xcode (9.4.1)
+#929507092 PhotoScapeX (2.8.2)
+#410628904 Wunderlist (3.4.8)
+#408981434 iMovie (10.1.9)
+#1044549675 Elmedia Video Player (6.9.2)
+#1171820258 Highland 2 (2.0.8)
+#909212772 Fhotoroom X (2.8)
+#1077124956 Polarr Photo Editor (5.0.3)

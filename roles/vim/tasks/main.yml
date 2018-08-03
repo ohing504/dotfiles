@@ -1,6 +1,6 @@
 ---
 # Installation
-- import_tasks: install-debian.yml
+- include_tasks: install-{{ ansible_os_family | lower }}.yml
   when: ansible_os_family == 'Debian'
 
 # configuration
@@ -13,7 +13,7 @@
   command: mv ~/.vimrc ~/.vimrc.orig
   args:
     creates: "{{ ansible_env.HOME }}/.vimrc.orig"
-  when: vimrc_stat.stat.exists
+  when: vimrc_stat.stat.exists and not vimrc_stat.stat.islnk
   changed_when: false
 
 - name: Symlink vimrc
@@ -23,4 +23,4 @@
     state: link
     force: yes
     follow: no
-  changed_when: false
+  changed_when: not vimrc_stat.stat.exists

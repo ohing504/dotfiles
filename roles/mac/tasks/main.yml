@@ -2,10 +2,12 @@
 - name: Update Homebrew
   homebrew: update_homebrew=yes
   when: package_update
+  changed_when: false
 
 - name: Upgrade Hombrew packages
   homebrew: upgrade_all=yes
   when: package_upgrade
+  changed_when: false
 
 - name: Link Brewfile
   file:
@@ -19,6 +21,7 @@
   shell: brew bundle check --file="{{ ansible_env.HOME }}/Brewfile"
   register: bundle_check_result
   ignore_errors: true
+  changed_when: false
 
 - name: Install apps using Brewfile
   shell: brew bundle install --file="{{ ansible_env.HOME }}/Brewfile"

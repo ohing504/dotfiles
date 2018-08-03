@@ -37,6 +37,7 @@
     dest: "{{ ansible_env.HOME }}/pytest.ini"
     state: link
     force: yes
-  changed_when: false
+    follow: no
+  changed_when: not pytest_stat.stat.exists
 
 - import_tasks: link-shell-configs.yml
