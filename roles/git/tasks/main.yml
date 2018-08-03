@@ -1,5 +1,7 @@
 ---
-- import_tasks: install.yml
+- include_tasks: "install-{{ ansible_os_family | lower }}.yml"
+
+- import_tasks: link-shell-configs.yml
 
 - name: Link global gitignore file
   file:

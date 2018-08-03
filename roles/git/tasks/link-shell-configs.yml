@@ -1,0 +1,15 @@
+---
+- name: Directory Creation
+  file:
+    path: "{{ ansible_env.HOME }}/.shell/{{ role_name }}"
+    state: directory
+
+- name: Link Shell configuration files
+  file:
+    src: "{{ item }}"
+    dest: "{{ ansible_env.HOME }}/.shell/{{ role_name }}/{{ item | basename | regex_replace('.link', '') }}"
+    state: link
+    force: yes
+    follow: no
+  with_fileglob:
+    - files/*.zsh.link
