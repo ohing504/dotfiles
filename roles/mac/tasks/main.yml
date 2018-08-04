@@ -1,12 +1,12 @@
 ---
 - name: Update Homebrew
   homebrew: update_homebrew=yes
-  when: package_update
+  when: mac_homebrew_update
   changed_when: false
 
 - name: Upgrade Hombrew packages
   homebrew: upgrade_all=yes
-  when: package_upgrade
+  when: mac_homebrew_upgrade
   changed_when: false
 
 - name: Link Brewfile
@@ -25,6 +25,6 @@
 
 - name: Install apps using Brewfile
   shell: brew bundle install --file="{{ ansible_env.HOME }}/Brewfile"
-  when: bundle_check_result is failed
+  when: bundle_check_result is failed and mac_install_apps_from_brewfile
 
 - import_tasks: link-shell-configs.yml

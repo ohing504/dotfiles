@@ -1,3 +1,4 @@
 ---
-package_update: yes
-package_upgrade: yes
+mac_homebrew_update: yes
+mac_homebrew_upgrade: yes
+mac_install_apps_from_brewfile: yes

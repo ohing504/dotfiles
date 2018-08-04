@@ -10,3 +10,6 @@
     - { role: ../roles/node }
   vars:
     - dotfiles_home: "{{ ansible_env.HOME }}/dotfiles"
+    - mac_homebrew_update: no
+    - mac_homebrew_upgrade: no
+    - mac_install_apps_from_brewfile: no
