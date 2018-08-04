@@ -1,2 +1,4 @@
 ---
-- import_tasks: nvm.yml
+- import_tasks: install-nvm.yml
+
+- import_tasks: link-shell-configs.yml

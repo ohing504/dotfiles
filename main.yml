@@ -23,4 +23,4 @@
     - { role: zsh, tags: ['bootstrap', 'zsh'] }
     - { role: vim, tags: ['vim'] }
     - { role: python, tags: ['python'] }
-#    - node
+    - { role: node, tags: ['node'] }
