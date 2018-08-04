@@ -1,14 +1,12 @@
 ---
 - hosts: localhost
   connection: local
-  vars:
-    pyenv_default_versions:
-      - system
   roles:
     - { role: ../roles/git }
     - { role: ../roles/mac, tags: ['bootstrap'], when: "ansible_os_family == 'Darwin'" }
     - { role: ../roles/zsh, tags: ['bootstrap'] }
     - { role: ../roles/vim }
     - { role: ../roles/python }
+    - { role: ../roles/node }
   vars:
     - dotfiles_home: "{{ ansible_env.HOME }}/dotfiles"
