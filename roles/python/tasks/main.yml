@@ -1,24 +1,24 @@
 ---
 - include_tasks: "install-{{ ansible_os_family | lower }}.yml"
 
-- name: Install python versions
-  command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}
-  with_items: "{{ pyenv_versions }}"
-  environment:
-    PYENV_ROOT: "{{ ansible_env.HOME }}/.pyenv"
-    PATH: "$PYENV_ROOT/bin:{{ ansible_env.PATH }}"
-
-- name: Set pyenv default versions
-  vars:
-    versions: "{{ pyenv_default_versions }}"
-  template:
-    src: templates/pyenv_versions.j2
-    dest: "{{ ansible_env.HOME }}/.python-version"
- 
-- name: Install addtional python packages
-  pip: name={{ item }} state=latest executable={{ ansible_env.HOME }}/.pyenv/shims/pip
-  with_items:
-    - "{{ python_packages }}"
+# - name: Install python versions
+#   command: creates={{ pyenv_root }}/versions/{{ item }} pyenv install {{ item }}
+#   with_items: "{{ pyenv_versions }}"
+#   environment:
+#     PYENV_ROOT: "{{ ansible_env.HOME }}/.pyenv"
+#     PATH: "$PYENV_ROOT/bin:{{ ansible_env.PATH }}"
+# 
+# - name: Set pyenv default versions
+#   vars:
+#     versions: "{{ pyenv_default_versions }}"
+#   template:
+#     src: templates/pyenv_versions.j2
+#     dest: "{{ ansible_env.HOME }}/.python-version"
+#  
+# - name: Install addtional python packages
+#   pip: name={{ item }} state=latest executable={{ ansible_env.HOME }}/.pyenv/shims/pip
+#   with_items:
+#     - "{{ python_packages }}"
  
 - name: Check if pytest.ini file exists
   stat: path="{{ ansible_env.HOME }}/pytest.ini"

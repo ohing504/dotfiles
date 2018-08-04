@@ -1,10 +1,10 @@
 ---
 pyenv_git_repo: https://github.com/pyenv/pyenv.git
+
 pyenv_root: "{{ ansible_env.HOME }}/.pyenv"
-pyenv_versions:
-  - 2.7.15
-  - 3.6.5
-pyenv_default_versions:
-  - 2.7.15
+
+pyenv_versions: []
+
+pyenv_default_versions: []
 
 python_packages: []
