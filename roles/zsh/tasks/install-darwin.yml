@@ -16,3 +16,4 @@
   command: chsh -s /usr/local/bin/zsh
   # Only run this if above task was changed
   when: zsh_shells.changed
+  become: true
