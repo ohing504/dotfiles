@@ -18,13 +18,13 @@
     follow: no
 
 - name: Check if Brewfile contains updates
-  shell: brew bundle check --file="{{ ansible_env.HOME }}/Brewfile"
+  shell: "brew bundle check --file={{ ansible_env.HOME }}/Brewfile"
   register: bundle_check_result
   ignore_errors: true
   changed_when: false
 
 - name: Install apps using Brewfile
-  shell: brew bundle install --file="{{ ansible_env.HOME }}/Brewfile"
+  shell: "brew bundle install --file={{ ansible_env.HOME }}/Brewfile"
   when: bundle_check_result is failed and mac_install_apps_from_brewfile
 
 - import_tasks: link-shell-configs.yml
