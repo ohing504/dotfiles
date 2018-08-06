@@ -36,15 +36,29 @@ before_install:
 
 install:
   # Install Ansible.
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip2 install ansible; else pip2 install ansible==$ANSIBLE_VERSION; fi
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip2 install ansible-lint; fi
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
 
 script:
   # Check the role/playbook's syntax.
   - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
 
+  - python --version
+  - pip --version
+  - where python
+  - where pip
+  - where ansible-playbook
+  - ansible-playbook --version
+
   # Run the role/playbook with ansible-playbook.
   - ansible-playbook -i tests/inventory tests/test.yml -vvvv
+
+  - python --version
+  - pip --version
+  - where python
+  - where pip
+  - where ansible-playbook
+  - ansible-playbook --version
 
   # Run the role/playbook with ansible-playbook for test.
   - ansible-playbook -i tests/inventory tests/test.yml -vvvv
