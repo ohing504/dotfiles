@@ -3,11 +3,15 @@
   homebrew: update_homebrew=yes
   when: mac_homebrew_update
   changed_when: false
+  tags:
+    - update
 
 - name: Upgrade Hombrew packages
   homebrew: upgrade_all=yes
   when: mac_homebrew_upgrade
   changed_when: false
+  tags:
+    - update
 
 - name: Link Brewfile
   file:

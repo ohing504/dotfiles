@@ -1,25 +1,31 @@
 # vi: set ft=yaml sw=2 ts=2 :
-
----
 # ref: https://tasdikrahman.me/2017/04/06/Testing-your-ansible-roles-using-travis-CI/
 
+---
 sudo: required
 language: generic
 
-# Doc:
+# ref:
 #  - https://docs.travis-ci.com/user/multi-os/
 #  - https://docs.travis-ci.com/user/reference/osx/#OS-X-Version
 os: osx
-matrix:
-  include:
-    # High Sierra (10.13)
-    - os: osx
-      osx_image: xcode9.3
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3 ANSIBLE_CONFIG=tests/ansible.cfg
-    # Sierra (10.12)
-    - os: osx
-      osx_image: xcode9.2
-      env: PYTHON=2.7 ANSIBLE_VERSION=2.5.3 ANSIBLE_CONFIG=tests/ansible.cfg
+osx_image:
+  - xcode9.3    # High Sierra (10.13)
+  - xcode9.2    # Sierra (10.12)
+env:
+  - ANSIBLE_VERSION="2.0" ANSIBLE_CONFIG=tests/ansible.cfg
+  - ANSIBLE_VERSION="1.9" ANSIBLE_CONFIG=tests/ansible.cfg
+
+#matrix:
+#  include:
+#    # High Sierra (10.13)
+#    - os: osx
+#      osx_image: xcode9.3
+#      env: PYTHON=2.7 ANSIBLE_VERSION=2.0 ANSIBLE_CONFIG=tests/ansible.cfg
+#    # Sierra (10.12)
+#    - os: osx
+#      osx_image: xcode9.2
+#      env: PYTHON=2.7 ANSIBLE_VERSION=1.9 ANSIBLE_CONFIG=tests/ansible.cfg
 
 branches:
   only:
@@ -27,21 +33,23 @@ branches:
     - develop
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update              ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install graphviz    ; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then sudo apt-get update -qq; fi
+  - brew update
+  - brew upgrade python@2 || brew install python@2 || brew link --overwrite python@2 || true
+  - sudo easy_install pip
+  - sudo pip install ansible
+#  - brew install graphviz
+#  - brew install python@2 &>/dev/null || brew link --overwrite python@2
 
   # You may need to forcibly remove all traces of
   # what you will later install
 
 install:
   # Install Ansible.
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible; else pip install ansible==$ANSIBLE_VERSION; fi
-  - if [ "$ANSIBLE_VERSION" = "latest" ]; then pip install ansible-lint; fi
+  - if [ "$ANSIBLE_VERSION" = "latest" ]; then brew install ansible; else brew install ansible@$ANSIBLE_VERSION; fi
 
 script:
   # Check the role/playbook's syntax.
-  - ansible-playbook -i tests/inventory tests/test.yml --syntax-check
+  - ansible-playbook tests/test.yml --syntax-check
 
   - python --version
   - pip --version
@@ -51,7 +59,7 @@ script:
   - ansible-playbook --version
 
   # Run the role/playbook with ansible-playbook.
-  - ansible-playbook -i tests/inventory tests/test.yml -vvvv
+  - ansible-playbook tests/test.yml -vvvv --skip-tags update
 
   - python --version
   - pip --version
@@ -61,11 +69,11 @@ script:
   - ansible-playbook --version
 
   # Run the role/playbook with ansible-playbook for test.
-  - ansible-playbook -i tests/inventory tests/test.yml -vvvv
+  - ansible-playbook tests/test.yml -vvvv --skip-tags update
 
   # Run the role/playbook again, checking to make sure it's idempotent.
   - >
-    ansible-playbook -i tests/inventory tests/test.yml
+    ansible-playbook tests/test.yml --skip-tags update
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)

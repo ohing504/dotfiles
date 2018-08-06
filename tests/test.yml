@@ -1,6 +1,7 @@
 ---
 - hosts: localhost
   connection: local
+  become: true
   roles:
     - { role: ../roles/git }
     - { role: ../roles/mac, tags: ['bootstrap'], when: "ansible_os_family == 'Darwin'" }
