@@ -3,9 +3,7 @@ tap "brewsci/science"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
-tap "homebrew/science"
 tap "homebrew/services"
-tap "homebrew/versions"
 
 # Binaries/Libraries
 brew "ansible"
