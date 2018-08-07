@@ -16,6 +16,7 @@ brew "mas"
 brew "pipenv"
 brew "pyenv"
 brew "python"
+brew "shfmt"
 brew "wget"
 brew "xz"
 brew "yarn", args: ["without-node"]
@@ -33,6 +34,7 @@ cask "notion"
 cask "postman"
 cask "vagrant"
 cask "virtualbox"
+cask "visual-studio-code"
 
 # Mac App Store (MAS)
 mas "Checkor", id: 1238750814
