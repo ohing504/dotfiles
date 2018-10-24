@@ -1,6 +1,5 @@
 ---
 - name: Install pyenv with Homebrew
-  homebrew: name={{ item }} state=latest
-  with_items:
-    - pipenv
-    - pyenv
+  homebrew:
+    name: ['pipenv', 'pyenv']
+    state: latest
