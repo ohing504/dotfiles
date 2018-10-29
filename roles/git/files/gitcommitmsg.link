@@ -1,7 +1,25 @@
 
-# If applied, this commit will...
+# Tag: Short description (fixes #1234)
 
+# Leave a blank line to distinguish between title and body
 
-# Explain why this change is being made
+# Longer description here if necessary
 
-# Provide links to any relevant tickets, articles or other resources
+# Rules
+#
+# The 'Tag' is one of the following:
+# .   feat: A new feature
+# .   fix: A bug fix
+# .   docs: Documentation only changes
+# .   style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+# .   refactor: A code change that neither fixes a bug nor adds a feature
+# .   perf: A code change that improves performance
+# .   build: Changing build process
+# .   test: Adding missing tests or correcting existing tests
+# .   ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+# .   chore: Other changes that don't modify src or test files
+# .   revert: Reverts a previous commit
+#
+# The 'Short description' write less than 72 characters.
+#
+# 이슈가 완전히 해결되었다면 (closes #1234)를, 그렇지 않다면 (refs #1234)를 사용한다.

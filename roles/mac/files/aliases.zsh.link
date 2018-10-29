@@ -1,5 +1,7 @@
 alias cask='brew cask'
 alias services='brew services'
 
+alias bbi='brew bundle install --file=~/Brewfile'
+
 # When you need disk space
-alias cleanup!='brew cleanup --force; brew cask cleanup;'
+alias cleanup!='brew cleanup'

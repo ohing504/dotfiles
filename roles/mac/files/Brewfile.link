@@ -7,8 +7,11 @@ tap "homebrew/services"
 
 # Binaries/Libraries
 brew "ansible"
+brew "awscli"
+brew "awsebcli"
 brew "docker"
 brew "docker-compose"
+brew "gettext"
 brew "git"
 brew "jq"
 brew "libyaml"
@@ -16,6 +19,7 @@ brew "mas"
 brew "pipenv"
 brew "pyenv"
 brew "python"
+brew "rbenv"
 brew "shfmt"
 brew "wget"
 brew "xz"
@@ -30,15 +34,20 @@ cask "google-chrome"
 cask "iterm2"
 cask "jetbrains-toolbox"
 cask "microsoft-teams"
+cask "ngrok"
 cask "notion"
 cask "postman"
+cask "sourcetree"
+cask "teamviewer"
 cask "vagrant"
 cask "virtualbox"
 cask "visual-studio-code"
+cask "vlc"
 
 # Mac App Store (MAS)
 mas "Checkor", id: 1238750814
 mas "Divvy", id: 413857545
+mas "Evernote", id: 406056744 
 mas "Friendly Streaming", id: 553245401
 mas "KakaoTalk", id: 869223134
 mas "Magnet", id: 441258766
@@ -49,9 +58,8 @@ mas "Slack", id: 803453959
 mas "Spark", id: 1176895641
 mas "Telegram", id: 747648890
 mas "Theine", id: 955848755
+mas "Wunderlist", id: 410628904
 
-#406056744 Evernote (7.2.3)
-#410628904 Wunderlist (3.4.8)
 #1044549675 Elmedia Video Player (6.9.2)
 #1171820258 Highland 2 (2.0.8)
 #909212772 Fhotoroom X (2.8)

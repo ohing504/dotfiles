@@ -4,3 +4,9 @@ export EDITOR='vim'
 # Virtual Environment Location
 export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/workspace
+
+# gettext
+export PATH="/usr/local/opt/gettext/bin:$PATH"
+
+# Ruby
+eval "$(rbenv init -)"
